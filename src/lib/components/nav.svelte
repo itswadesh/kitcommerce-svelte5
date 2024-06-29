@@ -10,12 +10,13 @@
 <nav class="bg-gray-100 py-4">
   <ul class="flex items-center gap-4 px-4 text-sm">
     <li><a href="/">Home</a></li>
+    <li><a href="/products">Products</a></li>
     <li><a href="/about">About</a></li>
   </ul>
 </nav>
 
 <div class="flex items-center bg-gray-300 p-4">
-  <span class="text-lg font-bold">SvelteMart</span>
+  <span class="text-lg font-bold">Svelte Commerce</span>
   <div class="relative ml-auto flex items-center">
     <button
       onclick={() => (cartOpen = !cartOpen)}

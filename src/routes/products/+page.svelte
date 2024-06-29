@@ -2,18 +2,18 @@
   import { getCartState } from '$lib/cart.svelte'
   const cartState = getCartState()
   let { data } = $props()
-  const qualifiesForFreeShipping = $derived(
-    cartState.summary?.total_amount >= 50
-  )
-  let freeShippingAlertCount = 0
+  // const qualifiesForFreeShipping = $derived(
+  //   cartState.summary?.total_amount >= 50
+  // )
+  // let freeShippingAlertCount = 0
 
-  $effect(() => {
-    if (freeShippingAlertCount > 0) return
-    if (qualifiesForFreeShipping) {
-      alert('You have qualified for free shipping!')
-      freeShippingAlertCount++
-    }
-  })
+  // $effect(() => {
+  //   if (freeShippingAlertCount > 0) return
+  //   if (qualifiesForFreeShipping) {
+  //     alert('You have qualified for free shipping!')
+  //     freeShippingAlertCount++
+  //   }
+  // })
 </script>
 
 <div
