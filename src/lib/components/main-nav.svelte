@@ -8,6 +8,9 @@
     <span class="font-bold"> Misiki </span>
   </a>
   <nav class="flex items-center gap-6 text-sm">
+    <svg viewBox="0 0 2 3" aria-hidden="true">
+      <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
+    </svg>
     <a
       href="https://docs.litekart.in"
       target="_blank"
@@ -53,7 +56,7 @@
     >
       About
     </a>
-    <a
+    <!-- <a
       href="https://github.com/itswadesh/kitcommerce-svelte5"
       target="_blank"
       rel="noopener noreferrer"
@@ -62,6 +65,9 @@
       )}
     >
       GitHub
-    </a>
+    </a> -->
+    <svg viewBox="0 0 2 3" aria-hidden="true">
+      <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
+    </svg>
   </nav>
 </div>

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import github from '$lib/images/github.svg'
   import CartItem from './cart-item.svelte'
   import ShoppingCart from 'phosphor-svelte/lib/ShoppingCart'
   import X from 'phosphor-svelte/lib/X'
@@ -14,20 +15,10 @@
   let cartOpen = $state(false)
 </script>
 
-<div class="flex justify-between container mx-auto items-center py-4">
+<header class="flex justify-between container mx-auto items-center py-4">
   <MainNav />
   <div class="flex items-center gap-2">
     <Search />
-
-    <Button on:click={toggleMode} variant="outline" size="icon">
-      <Sun
-        class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-      />
-      <Moon
-        class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-      />
-      <span class="sr-only">Toggle theme</span>
-    </Button>
     <div class="flex items-center">
       <div class="relative ml-auto flex items-center">
         <button
@@ -74,5 +65,21 @@
         {/if}
       </div>
     </div>
+    <Button on:click={toggleMode} variant="outline" size="icon">
+      <Sun
+        class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+      />
+      <Moon
+        class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+      />
+      <span class="sr-only">Toggle theme</span>
+    </Button>
+    <div class="md:flex corner">
+      <a href="https://github.com/sveltejs/kit">
+        <Button on:click={toggleMode} variant="outline" size="icon">
+          <img src={github} alt="GitHub" class="w-full m-1" />
+        </Button>
+      </a>
+    </div>
   </div>
-</div>
+</header>
