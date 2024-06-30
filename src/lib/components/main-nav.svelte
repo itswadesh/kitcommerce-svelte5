@@ -7,9 +7,10 @@
   <a href="/" class="mr-6 flex items-center space-x-2">
     <span class="font-bold"> Misiki </span>
   </a>
-  <nav class="flex items-center gap-6 text-sm hidden sm:inline-block">
+  <nav class="flex items-center gap-6 text-sm">
     <a
-      href="/docs"
+      href="https://docs.litekart.in"
+      target="_blank"
       class={cn(
         'transition-colors hover:text-foreground/80',
         $page.url.pathname === '/docs'
@@ -53,7 +54,7 @@
       About
     </a>
     <a
-      href="/"
+      href="https://github.com/itswadesh/kitcommerce-svelte5"
       target="_blank"
       rel="noopener noreferrer"
       class={cn(

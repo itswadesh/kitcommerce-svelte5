@@ -8,5 +8,7 @@
   let titleInput = $state<HTMLInputElement>()
 </script>
 
-<h1 class="mb-4 text-xl font-semibold">Home page</h1>
-<a href="/products"> Products </a>
+<div class="container mx-auto">
+  <h1 class="mb-4 text-xl font-semibold">Home page</h1>
+  <a href="/products"> Products </a>
+</div>
