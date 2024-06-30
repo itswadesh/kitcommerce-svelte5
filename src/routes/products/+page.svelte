@@ -1,7 +1,9 @@
 <script lang="ts">
+  import type { CartProduct } from '$lib/types'
   import { getCartState } from '$lib/cart.svelte'
   const cartState = getCartState()
-  let { data } = $props()
+  import Product from './product.svelte'
+  let { data: CartProduct } = $props()
   // const qualifiesForFreeShipping = $derived(
   //   cartState.summary?.total_amount >= 50
   // )
@@ -16,7 +18,22 @@
   // })
 </script>
 
-<div
+<div class="container mx-auto">
+  <div class="space-y-1 mb-8 text-center">
+    <h2 class="text-2xl font-semibold tracking-tight">Recommended for You</h2>
+    <p class="text-sm text-muted-foreground">
+      High quality products at affordable price
+    </p>
+  </div>
+  <div
+    class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5"
+  >
+    {#each CartProduct.products as p}
+      <Product product={p} aspectRatio="square" />
+    {/each}
+  </div>
+</div>
+<!-- <div
   class="grid grid-cols-1 gap-6 bg-gray-100 p-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"
 >
   {#each data.products as product}
@@ -66,4 +83,4 @@
       </div>
     </div>
   {/each}
-</div>
+</div> -->

@@ -35,7 +35,7 @@
           cartState.add({ qty: -1, product: cartProduct.product })
         }
       }}
-      class="rounded p-1 hover:bg-gray-200"
+      class="rounded p-1"
       aria-label="Subtract 1 from qty"
     >
       <Minus class="size-4" />
@@ -44,7 +44,7 @@
       {cartProduct.qty}
     </span>
     <button
-      class="rounded p-1 hover:bg-gray-200"
+      class="rounded p-1"
       aria-label="Add 1 to qty"
       onclick={() => cartState.add({ qty: 1, product: cartProduct.product })}
     >

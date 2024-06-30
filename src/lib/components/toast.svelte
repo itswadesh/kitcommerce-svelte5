@@ -12,7 +12,7 @@
 </script>
 
 <div
-  class="relative flex h-16 w-60 flex-col justify-center rounded-md border border-gray-500 bg-gray-300 p-2 shadow-md"
+  class="relative flex h-16 w-60 flex-col justify-center rounded-md border p-2 shadow-md"
 >
   <span class="text-sm font-medium">{toast.title}</span>
   <span class="text-xs">{toast.message}</span>
