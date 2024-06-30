@@ -11,18 +11,7 @@
     <svg viewBox="0 0 2 3" aria-hidden="true">
       <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
     </svg>
-    <a
-      href="https://docs.litekart.in"
-      target="_blank"
-      class={cn(
-        'transition-colors hover:text-foreground/80',
-        $page.url.pathname === '/docs'
-          ? 'text-foreground'
-          : 'text-foreground/60'
-      )}
-    >
-      Docs
-    </a>
+
     <a
       href="/products"
       class={cn(
@@ -55,6 +44,18 @@
       )}
     >
       About
+    </a>
+    <a
+      href="https://docs.litekart.in"
+      target="_blank"
+      class={cn(
+        'transition-colors hover:text-foreground/80',
+        $page.url.pathname === '/docs'
+          ? 'text-foreground'
+          : 'text-foreground/60'
+      )}
+    >
+      Docs
     </a>
     <!-- <a
       href="https://github.com/itswadesh/kitcommerce-svelte5"

@@ -8,7 +8,7 @@
   import Search from './search.svelte'
   import Button from './ui/button/button.svelte'
   import { toggleMode } from 'mode-watcher'
-  import { Sun } from 'svelte-radix'
+  import { GithubLogo, Sun } from 'svelte-radix'
   import { Moon } from 'phosphor-svelte'
   import { Card } from './ui/card'
   const cartState = getCartState()
@@ -76,8 +76,9 @@
     </Button>
     <div class="md:flex corner">
       <a href="https://github.com/sveltejs/kit">
-        <Button on:click={toggleMode} variant="outline" size="icon">
-          <img src={github} alt="GitHub" class="w-full m-1" />
+        <Button variant="outline" size="icon">
+          <!-- <img src={github} alt="GitHub" class="w-full m-1 text-white" /> -->
+          <GithubLogo />
         </Button>
       </a>
     </div>
