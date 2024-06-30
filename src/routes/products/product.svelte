@@ -15,9 +15,11 @@
 
 <Card class="w-full max-w-xs flex flex-col justify-between">
   <img src={product.thumbnail} height="250" alt="Product" class="aspect-[1]" />
-  <CardHeader class="p-4">
-    <CardTitle class="text-xl">{product.title}</CardTitle>
-  </CardHeader>
+  <a href="/products/{product.id}">
+    <CardHeader class="p-4">
+      <CardTitle class="text-xl">{product.title}</CardTitle>
+    </CardHeader>
+  </a>
   <CardFooter class="p-4 flex justify-between items-center ">
     <div class="text-2xl font-semibold">${product.price}</div>
     <div class="flex items-center">

@@ -6,11 +6,6 @@
 	import Nav from '$lib/components/nav.svelte';
 	import '../app.css';
   import { ModeWatcher } from "mode-watcher";
-	import Sun from "svelte-radix/Sun.svelte";
-  import Moon from "svelte-radix/Moon.svelte";
-  import { toggleMode } from "mode-watcher";
-  import { Button } from "$lib/components/ui/button";
-  import Header from './Header.svelte'
 	let { children }: { children: Snippet } = $props();
 
 	setToastState();
@@ -20,8 +15,6 @@
 <ModeWatcher />
 
 <Toaster />
-
-<Header />
 
 <Nav />
 
