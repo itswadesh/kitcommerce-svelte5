@@ -4,6 +4,7 @@
   import Plus from 'phosphor-svelte/lib/Plus'
   import Trash from 'phosphor-svelte/lib/Trash'
   import { getCartState } from '$lib/cart.svelte'
+  import { Button } from './ui/button'
   const cartState = getCartState()
 
   type Props = {

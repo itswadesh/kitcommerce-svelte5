@@ -11,6 +11,7 @@
   import { GithubLogo, Sun } from 'svelte-radix'
   import { Moon } from 'phosphor-svelte'
   import { Card } from './ui/card'
+  import { goto } from '$app/navigation'
   const cartState = getCartState()
   let cartOpen = $state(false)
 </script>
@@ -60,6 +61,13 @@
                   Total: ${cartState?.summary?.total_amount}
                 </p>
               </div>
+              <Button
+                onclick={() => {
+                  cartOpen = false
+                  goto('/checkout')
+                }}
+                class="w-full mt-6">Proceed to Checkout</Button
+              >
             </div>
           </Card>
         {/if}
