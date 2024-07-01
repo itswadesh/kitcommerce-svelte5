@@ -6,7 +6,7 @@ export const load: PageLoad = async ({ fetch, params }) => {
   const products = await fetch(`https://dummyjson.com/products/${slug}`).then(
     (res) => res.json()
   )
-  console.log(products)
+  // console.log(products)
   return {
     product: products as Product[]
   }

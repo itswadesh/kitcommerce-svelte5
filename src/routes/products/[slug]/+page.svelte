@@ -10,18 +10,13 @@
   } from '$lib/components/ui/card'
   import { Label } from '$lib/components/ui/label'
   import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group'
-  import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue
-  } from '$lib/components/ui/select'
-  import { Star, StarFilled, ZoomIn } from 'svelte-radix'
+  import Select from '$lib/components/select.svelte'
+  import { Minus, Plus, Star, StarFilled, ZoomIn } from 'svelte-radix'
   let { data } = $props()
   import { getCartState } from '$lib/cart.svelte'
   const cartState = getCartState()
   let qty = $state(1)
+  const allQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 </script>
 
 <div
@@ -178,10 +173,47 @@
           </li>
         </ul>
       </div>
-      <div class="grid gap-2">
-        <Label for="quantity" class="text-base">Quantity</Label>
-        {qty}
-        <Select bind:value={qty}>
+      {#if cartState.cart_items.some((item) => item.product.id === data.product.id)}
+        <div class="flex items-center">
+          <Button
+            variant="outline"
+            size="icon"
+            class="rounded-full text-xs mr-2 transition-colors duration-300"
+            onclick={() => {
+              cartState.add({ qty: -1, product: data.product })
+            }}
+          >
+            <Minus />
+          </Button>
+          {cartState.cart_items.find((c) => c.product.id === data.product.id)
+            ?.qty}
+          <Button
+            variant="outline"
+            size="icon"
+            class="rounded-full mx-2  transition-colors duration-300"
+            onclick={() => {
+              cartState.add({ qty: 1, product: data.product })
+            }}
+          >
+            <Plus />
+          </Button>
+        </div>
+      {:else}
+        <Button
+          size="lg"
+          onclick={() => cartState.add({ product: data.product, qty })}
+        >
+          Add to cart
+        </Button>
+      {/if}
+      <!-- <Select
+          title="Select"
+          label="Qty"
+          id="qty"
+          value={qty}
+          data={allQuantity}
+        /> -->
+      <!-- <Select bind:value={qty}>
           <SelectTrigger class="w-24">
             <SelectValue placeholder="Select" />
           </SelectTrigger>
@@ -192,13 +224,7 @@
             <SelectItem value="4">4</SelectItem>
             <SelectItem value="5">5</SelectItem>
           </SelectContent>
-        </Select>
-      </div>
-      <Button
-        size="lg"
-        onclick={() => cartState.add({ product: data.product, qty })}
-        >Add to cart</Button
-      >
+        </Select> -->
     </form>
   </div>
 </div>
