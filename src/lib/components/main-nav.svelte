@@ -12,7 +12,7 @@
       <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
     </svg>
 
-    <a
+    <!-- <a
       href="/products"
       class={cn(
         'transition-colors hover:text-foreground/80',
@@ -22,7 +22,7 @@
       )}
     >
       Products
-    </a>
+    </a> -->
     <a
       href="/cart"
       class={cn(

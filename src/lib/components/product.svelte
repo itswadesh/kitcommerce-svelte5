@@ -10,7 +10,7 @@
   import { Button } from '$lib/components/ui/button'
   import { getCartState } from '$lib/cart.svelte'
   const cartState = getCartState()
-  let { product, aspectRatio, width, height }: any = $props()
+  let { product }: any = $props()
 </script>
 
 <Card class="w-full max-w-xs flex flex-col justify-between">
