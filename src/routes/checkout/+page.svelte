@@ -20,7 +20,9 @@
             class="rounded-md object-cover"
           />
           <div class="flex-1">
-            <h3 class="font-medium">{item.product?.title}</h3>
+            <a href="/products/{item.product?.id}">
+              <h3 class="font-medium">{item.product?.title}</h3>
+            </a>
             <div class="flex items-center gap-4 mt-2">
               <div class="font-medium">${item.product?.price?.toFixed(2)}</div>
               <div class="flex items-center">

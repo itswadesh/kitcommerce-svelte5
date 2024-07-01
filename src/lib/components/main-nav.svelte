@@ -12,22 +12,22 @@
       <path d="M0,0 L1,2 C1.5,3 1.5,3 2,3 L2,0 Z" />
     </svg>
 
-    <!-- <a
-      href="/products"
+    <a
+      href="/contact"
       class={cn(
         'transition-colors hover:text-foreground/80',
-        $page.url.pathname.startsWith('/docs/components')
+        $page.url.pathname.startsWith('/contact')
           ? 'text-foreground'
           : 'text-foreground/60'
       )}
     >
-      Products
-    </a> -->
+      Contact
+    </a>
     <a
       href="/cart"
       class={cn(
         'transition-colors hover:text-foreground/80',
-        $page.url.pathname.startsWith('/themes')
+        $page.url.pathname.startsWith('/cart')
           ? 'text-foreground'
           : 'text-foreground/60'
       )}
@@ -38,14 +38,14 @@
       href="/about"
       class={cn(
         'transition-colors hover:text-foreground/80',
-        $page.url.pathname.startsWith('/examples')
+        $page.url.pathname.startsWith('/about')
           ? 'text-foreground'
           : 'text-foreground/60'
       )}
     >
       About
     </a>
-    <a
+    <!-- <a
       href="https://docs.litekart.in"
       target="_blank"
       class={cn(
@@ -56,7 +56,7 @@
       )}
     >
       Docs
-    </a>
+    </a> -->
     <!-- <a
       href="https://github.com/itswadesh/kitcommerce-svelte5"
       target="_blank"

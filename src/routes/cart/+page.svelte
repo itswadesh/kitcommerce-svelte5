@@ -20,7 +20,9 @@
             class="rounded-md object-cover"
           />
           <div class="flex-1">
-            <h3 class="font-medium">{item.product?.title}</h3>
+            <a href="/products/{item.product?.id}">
+              <h3 class="font-medium">{item.product?.title}</h3>
+            </a>
             <div class="flex items-center gap-4 mt-2">
               <!-- <Select
                 defaultValue={item.qty}
@@ -102,7 +104,9 @@
           </span>
         </div>
       </div>
-      <Button class="w-full mt-6">Proceed to Checkout</Button>
+      <a href="/checkout">
+        <Button class="w-full mt-6">Proceed to Checkout</Button>
+      </a>
     </div>
   </div>
 </div>
