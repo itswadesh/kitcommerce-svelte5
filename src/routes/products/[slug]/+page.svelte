@@ -17,6 +17,7 @@
   const cartState = getCartState()
   let qty = $state(1)
   const allQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+  let selectedImage = $state(data.product?.thumbnail)
 </script>
 
 <div
@@ -25,9 +26,8 @@
   <div class="grid gap-4">
     <div class="relative overflow-hidden rounded-lg">
       <img
-        src={data.product?.thumbnail}
+        src={selectedImage}
         alt="Product Image"
-        width={800}
         height={800}
         class="object-cover w-full aspect-square"
       />
@@ -42,6 +42,10 @@
     <div class="grid grid-cols-4 gap-2">
       {#each data.product.images as img}
         <button
+          onclick={() => {
+            console.log('fffffffffffff')
+            selectedImage = img
+          }}
           class="border hover:border-primary rounded-lg overflow-hidden transition-colors"
         >
           <img
