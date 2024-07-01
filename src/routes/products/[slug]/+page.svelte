@@ -43,7 +43,6 @@
       {#each data.product.images as img}
         <button
           onclick={() => {
-            console.log('fffffffffffff')
             selectedImage = img
           }}
           class="border hover:border-primary rounded-lg overflow-hidden transition-colors"
