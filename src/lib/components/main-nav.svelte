@@ -13,6 +13,17 @@
     </svg>
 
     <a
+      href="/login"
+      class={cn(
+        'transition-colors hover:text-foreground/80',
+        $page.url.pathname.startsWith('/login')
+          ? 'text-foreground'
+          : 'text-foreground/60'
+      )}
+    >
+      Login
+    </a>
+    <a
       href="/contact"
       class={cn(
         'transition-colors hover:text-foreground/80',
