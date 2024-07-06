@@ -14,8 +14,8 @@
 </script>
 
 <Card class="w-full max-w-xs flex flex-col justify-between">
-  <img src={product.thumbnail} height="250" alt="Product" class="aspect-[1]" />
-  <a href="/products/{product.id}">
+  <img src={product.img} height="250" alt="Product" class="aspect-[1]" />
+  <a href="/products/{product.handle}">
     <CardHeader class="p-4">
       <CardTitle class="text-xl">{product.title}</CardTitle>
     </CardHeader>

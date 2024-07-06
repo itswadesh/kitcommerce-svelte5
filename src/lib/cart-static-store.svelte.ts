@@ -1,8 +1,6 @@
 import { getContext, onDestroy, setContext } from 'svelte'
 import type { Cart } from './types'
 import type CartItem from './components/cart-item.svelte'
-import { CartService } from './services'
-import { toast } from 'svelte-sonner'
 
 export class CartState {
   cart_items = $state<Cart[]>([])
@@ -18,27 +16,26 @@ export class CartState {
     })
   }
 
-  async fetch({ cartId }: any) {
-    try {
-      const c = await CartService.fetchMyCart({ cartId })
-      console.log('🚀 ~ CartState ~ add ~ c:', c)
-    } catch (e) {
-      toast.error(e.body.message)
+  add({ qty, product }: any) {
+    const x = this.cart_items.find((c) => c.product.id == product.id)
+    if (x) {
+      x.qty = x.qty + qty
+      if (x.qty < 1) {
+        this.cart_items = this.cart_items.filter(
+          (cart) => cart.product.id !== product.id
+        )
+      }
+    } else {
+      const item_id = crypto.randomUUID()
+      this.cart_items.push({ item_id, qty, product })
     }
-  }
-
-  async add({ qty, product, variant }: any) {
-    try {
-      const c = await CartService.addToCartService({
-        qty,
-        pid: product?.id,
-        vid: variant?.id
-      })
-      console.log('🚀 ~ CartState ~ add ~ c:', c)
-    } catch (e) {
-      toast.error(e.body.message)
-      // throw e.body.message
-    }
+    this.summary = calculateSummary(this.cart_items)
+    // this.cartToTimeoutMap.set(
+    //   item_id,
+    //   setTimeout(() => {
+    //     this.remove(item_id)
+    //   }, 50000)
+    // )
   }
 
   // remove(item_id: string, qty: number) {
@@ -60,4 +57,15 @@ export function setCartState() {
 
 export function getCartState() {
   return getContext<ReturnType<typeof setCartState>>(CART_KEY)
+}
+
+function calculateSummary(cart_items: Cart[]) {
+  let total_qty = 0
+  let total_amount = 0
+
+  for (const { product, qty } of cart_items) {
+    total_qty += qty || 1
+    total_amount += product?.price * (qty || 1)
+  }
+  return { total_qty, total_amount: total_amount.toFixed(2) }
 }

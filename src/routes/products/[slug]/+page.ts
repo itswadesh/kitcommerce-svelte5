@@ -1,13 +1,18 @@
+import { ProductService } from '$lib/services'
 import type { Product } from '$lib/types'
 import type { PageLoad } from './$types'
 
 export const load: PageLoad = async ({ fetch, params }) => {
   const slug = params.slug
-  const products = await fetch(`https://dummyjson.com/products/${slug}`).then(
-    (res) => res.json()
-  )
-  // console.log(products)
+  console.log('🚀 ~ constload:PageLoad= ~ slug:', slug)
+  let product: any = {}
+  try {
+    product = await ProductService.fetchProduct({ slug })
+    // console.log('🚀 ~ constload:PageLoad= ~ product:', product)
+  } catch (e) {
+    console.log('🚀 ~ constload:PageLoad= ~ e:', e)
+  }
   return {
-    product: products as Product[]
+    product: product as Product[]
   }
 }

@@ -1,23 +1,21 @@
 <script>
   import { Badge } from '$lib/components/ui/badge'
   import Button from '$lib/components/ui/button/button.svelte'
-  import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle
-  } from '$lib/components/ui/card'
   import { Label } from '$lib/components/ui/label'
   import { RadioGroup, RadioGroupItem } from '$lib/components/ui/radio-group'
   import Select from '$lib/components/select.svelte'
   import { Minus, Plus, Star, StarFilled, ZoomIn } from 'svelte-radix'
   let { data } = $props()
   import { getCartState } from '$lib/cart.svelte'
+  import { onMount } from 'svelte'
   const cartState = getCartState()
   let qty = $state(1)
   const allQuantity = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   let selectedImage = $state(data.product?.thumbnail)
+  onMount(async () => {
+    console.log('🚀 ~ Page ~ onMount ~ cartState:')
+    await cartState.fetch({ cartId: 'cart_01J248N50BZG3FAR4Y48BAMJFR' })
+  })
 </script>
 
 <div
@@ -40,15 +38,15 @@
       </div>
     </div>
     <div class="grid grid-cols-4 gap-2">
-      {#each data.product.images as img}
+      {#each data.product?.images || [] as img}
         <button
           onclick={() => {
-            selectedImage = img
+            selectedImage = img.url
           }}
           class="border hover:border-primary rounded-lg overflow-hidden transition-colors"
         >
           <img
-            src={img}
+            src={img.url}
             alt="Preview thumbnail"
             width={100}
             height={100}
@@ -63,14 +61,25 @@
     <div>
       <p>{data.product.brand} / {data.product.category}</p>
       <h1 class="text-3xl font-bold">{data.product.title}</h1>
-      <p class="text-red-500 text-sm">Only {data.product.stock} left</p>
+      <div class="grid grid-cols-4 gap-2 my-2">
+        {#each data.product?.variants || [] as v}
+          <button
+            class="border hover:border-primary rounded-lg overflow-hidden transition-colors"
+          >
+            {v.title}
+          </button>
+        {/each}
+      </div>
+      <p class="text-red-500 text-sm">
+        Only {data.product?.variants[0]?.inventory_quantity} left
+      </p>
       <p class="text-muted-foreground">
         {data.product.description}
       </p>
       <p class="mt-2">
-        SKU: {data.product?.sku}
+        SKU: {data.product?.variants[0]?.sku}
         <br />
-        Barcode: {data.product?.meta?.barcode}
+        Barcode: {data.product?.variants[0]?.hs_code}
       </p>
       <p class="text-muted-foreground">
         Dimentions: {data.product.dimensions?.width} x {data.product.dimensions
@@ -79,7 +88,7 @@
         Weight: {data.product.weight}
       </p>
       <p class="text-muted-foreground mt-2 space-x-2">
-        {#each data.product.tags as t}
+        {#each data.product?.tags || [] as t}
           <Badge variant="outline">{t}</Badge>
         {/each}
       </p>
@@ -94,7 +103,9 @@
           {/if}
         {/each}
       </div>
-      <div class="text-4xl font-bold">${data.product.price}</div>
+      <div class="text-4xl font-bold">
+        ${(data.product?.variants[0]?.original_price / 100)?.toFixed(2)}
+      </div>
     </div>
     <form class="grid gap-4">
       <!-- <div class="grid gap-2">
@@ -204,7 +215,12 @@
       {:else}
         <Button
           size="lg"
-          onclick={() => cartState.add({ product: data.product, qty })}
+          onclick={() =>
+            cartState.add({
+              product: data.product,
+              variant: data.product?.variants[0],
+              qty
+            })}
         >
           Add to cart
         </Button>
